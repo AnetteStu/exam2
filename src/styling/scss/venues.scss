@@ -1,0 +1,89 @@
+.venuesResultPage {
+  margin-top: 2em;
+}
+
+.venues {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.venueCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1em;
+  border-radius: .5em;
+  color: #574a42;
+  max-width: 15em;;
+
+  transition: .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: rgba(230, 145, 88, 0.241) 3px 2px 5px 3px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+}
+
+.venueLink {
+  padding-top: .5em;
+}
+
+.venueDetails {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  width: 100%;
+  justify-content: space-between;
+  font-family: 'Sora', sans-serif;
+}
+
+.venuesName {
+  font-family: 'Sora', sans-serif;
+  text-transform: uppercase;
+}
+
+.venueSubDetails {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  width: 100%;
+  justify-content: space-between;
+}
+
+.venueDetails, a {
+  text-decoration: none;
+}
+
+.venueHeaderImage {
+  width: 15em;
+  height: 15em;
+
+  border-radius: 1em 1em .5em .5em;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.detailsButton {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 766px) {
+  .venues {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}

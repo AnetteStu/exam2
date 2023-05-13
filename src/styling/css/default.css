@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Encode+Sans&family=Montserrat+Alternates:wght@300;400&family=Sen&family=Sora&display=swap");
+* {
+  font-family: "Montserrat Alternates", sans-serif;
+}
+
+html, body {
+  min-height: 100vh;
+  background: linear-gradient(#fffcff, #efebee) no-repeat;
+  background-attachment: fixed;
+}
+
+div {
+  position: initial;
+}
+
+a {
+  text-decoration: none;
+  color: #E48025;
+  transition: ease-in-out 0.2s;
+}
+a:hover {
+  color: #E48025;
+}
+
+.fa-star {
+  color: rgb(255, 153, 63);
+}
+
+.defaultButton, #defaultButton {
+  height: 2em;
+  border-radius: 0.2em;
+  background-color: #E48025;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 1.1em;
+}
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.defaultForm {
+  padding: 2em;
+}
+
+.textfieldInputsGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.textfieldInputsGroup:first-of-type(div) {
+  width: 100%;
+}
+
+.textfieldInputsGroup2 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+}
+
+.textfieldInputsGroup3 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}/*# sourceMappingURL=default.css.map */

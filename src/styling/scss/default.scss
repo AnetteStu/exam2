@@ -1,0 +1,89 @@
+@import "./_variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans&family=Montserrat+Alternates:wght@300;400&family=Sen&family=Sora&display=swap');
+
+* {
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+html, body {
+  min-height: 100vh;
+  background: linear-gradient( #fffcff, #efebee) no-repeat;
+  background-attachment: fixed;
+  // filter: brightness(0.8);
+}
+
+div {
+  // z-index: 3;
+  position: initial;
+}
+
+a {
+  text-decoration: none;
+  color: $btnColor;
+
+  transition: ease-in-out .2s;
+
+  &:hover {
+    color: $btnColor;
+  }
+}
+
+.fa-star {
+  color: rgb(255, 153, 63);
+}
+
+.defaultButton, #defaultButton {
+  height: 2em;
+  // margin: 0 auto;
+  // width: 100%;
+  border-radius: $radius;
+
+  background-color: $btnColor;
+  color: $txtColor;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  font-size: 1.1em;
+}
+
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.defaultForm {
+  padding: 2em;
+}
+
+.textfieldInputsGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &:first-of-type(div) {
+    width: 100%;
+  }
+}
+
+.textfieldInputsGroup2 {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1em;
+}
+
+.textfieldInputsGroup3 {
+  display: flex;
+  flex-direction: column;
+  // flex-grow: 1;
+  margin-bottom: 1em;
+  // width: 100%;
+}
+
+.meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

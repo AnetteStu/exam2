@@ -1,0 +1,18 @@
+.bookingDetails {
+  // width: 10em;
+  // background-color: rgb(225, 218, 218);
+  box-shadow: rgb(192, 181, 172) 2px 2px 5px 1px;
+  border-radius: .5em;
+  margin: .3em;
+  padding: .2em;
+}
+
+@media screen and (min-width: 800px) {
+  .allBookings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    width: 100%;
+  }
+}

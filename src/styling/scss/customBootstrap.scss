@@ -1,0 +1,37 @@
+@import "./variables";
+
+.customLandingNav {
+  z-index: 3;
+  width: 100%;
+  background: linear-gradient( #fffcff, #efebee) no-repeat;
+}
+
+.customNav {
+  // background: linear-gradient($btnColor, rgb(255, 228, 203));
+  background: radial-gradient(circle at center 0px, rgb(255, 225, 210) 74.5%, rgba(255, 255, 255, 0) 75%);
+  // position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+
+  margin-bottom: 1em;
+}
+
+
+@media screen and (min-width:767px) and (max-width: 1023px) {
+  .customNav {
+    background: $btnColor;
+    color: white;
+  }
+  
+}
+
+@media screen and (min-width:1023px) {
+  .customNav {
+    background: $btnColor;
+    color: white;
+  }
+  
+}
+

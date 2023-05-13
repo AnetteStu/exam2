@@ -1,0 +1,77 @@
+@import "./variables";
+
+.venueName {
+  text-transform: uppercase;
+  font-family: 'Sen', sans-serif;
+}
+
+
+.venueHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.venueMeta i {
+  padding: 0 .2em;
+}
+
+.venueDetails {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.venueDescription {
+  font-family: 'Encode Sans', sans-serif;
+}
+
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  & img:first-child {
+    min-width: 100%;
+    flex: 1 0;
+    // display: none;
+  }
+  & img:not(:first-child) {
+    max-width: 33%;
+  }
+}
+
+// div img:first-child {
+//   width: 30rem;
+// }
+.image {
+  width: 10rem;
+  height: 13rem;
+  object-fit: cover;
+  flex: 0;
+  border-radius: .5em;
+}
+
+.bookings {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-bottom: .5em;
+}
+
+.bookedDates {
+  background: linear-gradient(0.37turn, $btnColor 16%, rgba(214, 214, 214, 0.0)77%);
+  padding: 0 .4em;
+  margin: .2em;
+  border-radius: .5em;
+  color: white;
+}
+
+.venueOwnerOptions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  & div:first-child {
+    padding-right: 2em;
+  }
+}

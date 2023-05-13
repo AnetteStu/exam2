@@ -1,0 +1,45 @@
+.profileContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.profileContent {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 10em;
+  height: 10em;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.profileNav {
+  min-width: 180px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 2em;
+  padding: 1em 0;
+  border-radius: 0 5em 5em 0;
+  background: linear-gradient(270deg, rgb(241, 237, 233), transparent);
+}
+.profileNav li {
+  list-style: none;
+}
+
+@media screen and (min-width: 800px) {
+  .profileContent {
+    justify-content: flex-start;
+  }
+  .avatar {
+    width: 15em;
+    height: 15em;
+  }
+}/*# sourceMappingURL=profile.css.map */
