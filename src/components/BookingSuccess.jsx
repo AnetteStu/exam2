@@ -35,7 +35,7 @@ export default function BookingSuccess() {
       }
     }
     getWithToken(url)
-  },[]);
+  },[url, booking]);
 
 
   return (
