@@ -13,8 +13,8 @@ export default function Bookings() {
   
   document.title = `Bookings`
   
-  const [bookings, setBookings] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [bookings, setBookings] = useState([]);
   const [isError, setIsError] = useState(false);
   const [id, setId] = useState("");
   const url = `${BASE_URL}${PROFILES}${USER_BOOKINGS}?_customer=true&_venue=true`
@@ -34,14 +34,15 @@ export default function Bookings() {
         const res = await fetch(url,fetchOptions);
         const json = await res.json();
         setBookings(json);
-        setIsLoading(false);
         console.log(bookings);
+        setIsLoading(false);
   
-    } catch (error) {
-      setIsLoading(false);
-      setIsError(true);
-    }
-  }getBookings()
+        } catch (error) {
+          setIsLoading(false);
+          setIsError(true);
+        }
+    } getBookings(url)
+    // eslint-disable-next-line
   }, [url]);
 
   if (isLoading) {
