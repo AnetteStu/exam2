@@ -89,7 +89,7 @@ export default function Register() {
 
   return (
     <>
-    <form onSubmit={handleRegister}>
+    <form onSubmit={handleRegister} className="form">
     <h2>Welcome back!</h2>
     <div className="textfieldInputsGroup">
       <div className="textfieldInputsGroup2">
