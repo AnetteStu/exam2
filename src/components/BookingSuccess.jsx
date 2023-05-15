@@ -15,7 +15,6 @@ export default function BookingSuccess() {
   useEffect(() => {
     async function getWithToken(url) {
       try {
-        // console.log(url);
         const fetchOptions = {
           method: 'GET',
           headers: {
@@ -35,7 +34,7 @@ export default function BookingSuccess() {
       }
     }
     getWithToken(url)
-  },[url, booking]);
+  },[url]);
 
 
   return (

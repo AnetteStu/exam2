@@ -10,14 +10,14 @@ export default function Bookings() {
   if(!token) {
     window.location.replace("/")
   }
-  
   document.title = `Bookings`
+
+  const url = `${BASE_URL}${PROFILES}${USER_BOOKINGS}?_customer=true&_venue=true`;
   
-  const [isLoading, setIsLoading] = useState(false);
   const [bookings, setBookings] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [id, setId] = useState("");
-  const url = `${BASE_URL}${PROFILES}${USER_BOOKINGS}?_customer=true&_venue=true`
   
   useEffect(() => {
     async function getBookings() {
@@ -33,6 +33,8 @@ export default function Bookings() {
         setIsLoading(true);
         const res = await fetch(url,fetchOptions);
         const json = await res.json();
+        if(json === []) {
+        }
         setBookings(json);
         console.log(bookings);
         setIsLoading(false);
@@ -41,8 +43,8 @@ export default function Bookings() {
           setIsLoading(false);
           setIsError(true);
         }
-    } getBookings(url)
-    // eslint-disable-next-line
+        return 
+      } getBookings()
   }, [url]);
 
   if (isLoading) {
