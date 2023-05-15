@@ -39,19 +39,10 @@ export default function BookingSuccess() {
 
   return (
     <div>
-      Booking successfull! <br/>
-      Booking id {id}
-      {/* From {booking.dateFrom} */}
-
-      {/* {booking.filter((aBooking) => {
-          return search === '' ? 
-          "" : 
-          aBooking.id.includes(id)
-        }).map((aBooking) => (
-        <div>{aBooking.id}</div>
-      ))} */}
-
-      <br/>
+      <div>
+        <p>Booking successfull!</p> 
+        <p>Booking id: {id}</p> 
+      </div>
       <Link to="/bookings/">To all bookings</Link>
 
     </div>

@@ -47,6 +47,13 @@ a:hover {
   padding: 2em;
 }
 
+form {
+  max-width: 60%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
 .textfieldInputsGroup {
   display: flex;
   flex-direction: column;
@@ -72,4 +79,10 @@ a:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 760px) {
+  form {
+    align-items: center;
+  }
 }/*# sourceMappingURL=default.css.map */

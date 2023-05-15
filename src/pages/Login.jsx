@@ -78,7 +78,7 @@ export default function Login() {
   }
 
   return (
-  <form onSubmit={handleLogin}>
+  <form onSubmit={handleLogin} className="form">
     <h2>Welcome back!</h2>
 
     <div className="textfieldInputsGroup">
@@ -122,33 +122,6 @@ export default function Login() {
           </FormControl>
         </div>
       </div>
-      {/* <TextField
-        // required
-        fullWidth
-        id="outlined-multiline-flexible"
-        label="Password"
-        name="password" 
-        value={inputs.password || ""} 
-        onChange={handleChange}
-        placeholder="password"
-      /> */}
-
-      {/* <label>Enter your email:
-        <input 
-          type="email" 
-          name="email" 
-          value={inputs.email || ""} 
-          onChange={handleChange}
-        />
-        </label> */}
-      {/* <label>Enter your password:
-      <input 
-        type="password" 
-        name="password" 
-        value={inputs.password || ""} 
-        onChange={handleChange}
-      />
-      </label> */}
       <div className="center">
         <Button 
           size="small"
@@ -159,8 +132,8 @@ export default function Login() {
           >
           Login
         </Button>
-      </div>
+    </div>
         Don't have an account? <Link to="/register"> Register!</Link>  
-    </form>
+  </form>
   )
 }
