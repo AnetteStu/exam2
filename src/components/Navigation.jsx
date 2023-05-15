@@ -18,7 +18,7 @@ export default function Navigation() {
   console.log(location);
   useEffect(() => {
     setHref(window.location.pathname)
-  },[]) 
+  },[location]) 
   getProfile(`${BASE_URL}${PROFILES}`)
 
   function handleLogoutClick() {

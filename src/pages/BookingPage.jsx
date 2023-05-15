@@ -22,7 +22,7 @@ export default function BookingPage() {
       }
     }
     getData()
-  });
+  }, [url]);
   
   document.title = `Book ${venue.name}`
   return (

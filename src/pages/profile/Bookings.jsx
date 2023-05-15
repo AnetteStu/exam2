@@ -17,33 +17,32 @@ export default function Bookings() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [id, setId] = useState("");
+  const url = `${BASE_URL}${PROFILES}${USER_BOOKINGS}?_customer=true&_venue=true`
   
   useEffect(() => {
-    async function getBookings(url) {
-  
-      const fetchOptions = {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        },
-      };
-  
-    try {
-      setIsError(false);
-      setIsLoading(true);
-      const res = await fetch(url,fetchOptions);
-      const json = await res.json();
-      setBookings(json);
-      setIsLoading(false);
-      console.log(bookings);
+    async function getBookings() {
+      try {
+        const fetchOptions = {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+        };
+        setIsError(false);
+        setIsLoading(true);
+        const res = await fetch(url,fetchOptions);
+        const json = await res.json();
+        setBookings(json);
+        setIsLoading(false);
+        console.log(bookings);
   
     } catch (error) {
       setIsLoading(false);
       setIsError(true);
     }
-  }getBookings(`${BASE_URL}${PROFILES}${USER_BOOKINGS}?_customer=true&_venue=true`)
-  }, [bookings]);
+  }getBookings()
+  }, [url]);
 
   if (isLoading) {
     return (<i className="fa-solid fa-circle-notch fa-spin"></i>)
