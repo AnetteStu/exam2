@@ -6,4 +6,10 @@
 .bookingInput {
   display: flex;
   flex-direction: row;
+
+
+  & input {
+    background-color: transparent;
+    border: 2px solid gray;
+  }
 }

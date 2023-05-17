@@ -124,6 +124,8 @@ export default function Register() {
           name="email" 
           value={inputs.email || ""} 
           onChange={handleChange}
+          inputProps={{pattern: "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"}}
+          placeholder="name@domain.com"
         />
         </div>
         <div className="textfieldInputsGroup2">

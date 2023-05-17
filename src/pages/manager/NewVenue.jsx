@@ -144,7 +144,7 @@ export default function NewVenue() {
                   name="name" 
                   value={inputs.name} 
                   onChange={handleChange}
-                  
+                  required
                 />
                 <TextField
                   fullWidth
@@ -154,6 +154,7 @@ export default function NewVenue() {
                   value={inputs.media} 
                   onChange={handleChange}
                   placeholder="Img1 img2 img3"
+                  required
                 />
               </div>
               <div className="textfieldInputsGroup3">
@@ -165,36 +166,42 @@ export default function NewVenue() {
                   onChange={handleChange}
                   multiline
                   maxRows={10}
+                  required
                 />
               </div>
               <div className="textfieldInputsGroup2">
                 <TextField
-                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                   id="outlined-multiline-flexible"
                   label="Price"
                   name="price" 
                   value={inputs.price} 
                   placeholder=""
                   onChange={handleChange}
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                   type="number"
+                  required
                 />
                 <TextField
-                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                   id="outlined-multiline-flexible"
                   label="Max Guests"
                   name="maxGuests" 
                   value={inputs.maxGuests} 
                   placeholder="Max 100"
                   onChange={handleChange}
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                  type="number"
+                  required
                 />
                 <TextField
-                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                   id="outlined-multiline-flexible"
                   label="Rating"
                   name="rating" 
                   value={inputs.rating} 
                   placeholder="Max 5"
                   onChange={handleChange}
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                  type="number"
+                  required
                 />
               </div>
               <div className="textfieldInputsGroup2">
@@ -204,6 +211,7 @@ export default function NewVenue() {
                   name="address" 
                   value={inputs.location.address} 
                   onChange={handleChange}
+                  required
                 />
                 <TextField
                   id="outlined-multiline-flexible"
@@ -211,6 +219,7 @@ export default function NewVenue() {
                   name="city" 
                   value={inputs.location.city} 
                   onChange={handleChange}
+                  required
                 />
                 <TextField
                   id="outlined-multiline-flexible"
@@ -219,6 +228,9 @@ export default function NewVenue() {
                   value={inputs.location.zip} 
                   placeholder="0000"
                   onChange={handleChange}
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                  type="number"
+                  required
                 />
               </div>
               <div className="textfieldInputsGroup2">
@@ -228,6 +240,7 @@ export default function NewVenue() {
                   name="country" 
                   value={inputs.location.country} 
                   onChange={handleChange}
+                  required
                 />
                 <TextField
                   id="outlined-multiline-flexible"
@@ -235,6 +248,7 @@ export default function NewVenue() {
                   name="continent" 
                   value={inputs.location.continent} 
                   onChange={handleChange}
+                  required
                 />
               </div>
             </div>

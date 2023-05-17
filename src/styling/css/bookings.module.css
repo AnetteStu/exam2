@@ -6,4 +6,8 @@
 .bookingInput {
   display: flex;
   flex-direction: row;
+}
+.bookingInput input {
+  background-color: transparent;
+  border: 2px solid gray;
 }/*# sourceMappingURL=bookings.module.css.map */
