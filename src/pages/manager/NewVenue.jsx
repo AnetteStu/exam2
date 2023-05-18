@@ -138,6 +138,7 @@ export default function NewVenue() {
             <div className="textfieldInputsGroup">
               <div className="textfieldInputsGroup2">
                 <TextField
+                  fullWidth
                   autoFocus={true}
                   id="outlined-multiline-flexible"
                   label="Name"
@@ -146,6 +147,8 @@ export default function NewVenue() {
                   onChange={handleChange}
                   required
                 />
+              </div>
+              <div className="textfieldInputsGroup2">
                 <TextField
                   fullWidth
                   id="outlined-multiline-flexible"
@@ -177,7 +180,7 @@ export default function NewVenue() {
                   value={inputs.price} 
                   placeholder=""
                   onChange={handleChange}
-                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 99999999 }}
                   type="number"
                   required
                 />
@@ -188,7 +191,7 @@ export default function NewVenue() {
                   value={inputs.maxGuests} 
                   placeholder="Max 100"
                   onChange={handleChange}
-                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 100 }}
                   type="number"
                   required
                 />
@@ -199,7 +202,7 @@ export default function NewVenue() {
                   value={inputs.rating} 
                   placeholder="Max 5"
                   onChange={handleChange}
-                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 5 }}
                   type="number"
                   required
                 />
@@ -228,7 +231,7 @@ export default function NewVenue() {
                   value={inputs.location.zip} 
                   placeholder="0000"
                   onChange={handleChange}
-                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                  inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 9999 }}
                   type="number"
                   required
                 />

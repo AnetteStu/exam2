@@ -7,37 +7,53 @@ import style from "../styling/css/landing.module.css";
 import { Link } from "react-router-dom";
 
 import { user } from "../constants/API";
+import { useState } from 'react';
 
-function valuetext(value) {
-  return `${value}`;
-}
-const minDistance = 10;
+// function valuetext(value) {
+//   return `${value}`;
+// }
+// const minDistance = 10;
 
 
 export default function Landing() {
 
-  const [value2, setValue2] = React.useState([0, 37]);
+  // const [value2, setValue2] = React.useState([0, 37]);
 
-  const handleChange = (event, newValue, activeThumb) => {
-    if (!Array.isArray(newValue)) {
-      return;
-    }
+  // const handleChange = (event, newValue, activeThumb) => {
+  //   if (!Array.isArray(newValue)) {
+  //     return;
+  //   }
 
-    if (newValue[1] - newValue[0] < minDistance) {
-      if (activeThumb === 0) {
-        const clamped = Math.min(newValue[0], 100 - minDistance);
-        setValue2([clamped, clamped + minDistance]);
-      } else {
-        const clamped = Math.max(newValue[1], minDistance);
-        setValue2([clamped - minDistance, clamped]);
-      }
-    } else {
-      setValue2(newValue);
-    }
-  };
+  //   if (newValue[1] - newValue[0] < minDistance) {
+  //     if (activeThumb === 0) {
+  //       const clamped = Math.min(newValue[0], 100 - minDistance);
+  //       setValue2([clamped, clamped + minDistance]);
+  //     } else {
+  //       const clamped = Math.max(newValue[1], minDistance);
+  //       setValue2([clamped - minDistance, clamped]);
+  //     }
+  //   } else {
+  //     setValue2(newValue);
+  //   }
+  // };
 
 
   document.title = `Home`
+
+  const [inputs, setInputs] = useState({});
+
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value.trim();
+    setInputs(values => ({...values, [name]: value}))
+    console.log(inputs);
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(inputs.textInput);
+    window.location.replace(`/venues?${inputs.textInput}`)
+  }
   return (
     <>
       <div className={style.bgOverlay}></div>
@@ -79,50 +95,50 @@ export default function Landing() {
                 noValidate
                 autoComplete="off"
                 className="defaultForm"
+                onSubmit={handleSubmit}
                 >
                 <div className="textfieldInputsGroup">
                   <TextField
+                    fullWidth
+                    autoFocus={true}
                     id="firstInput outlined-multiline-flexible"
                     label="Your destination"
-                    multiline
-                    maxRows={2}
-                    sx={{
-                      width: "100%",
-                    }}
+                    // sx={{
+                    //   width: "100%",
+                    // }}
+                    style={{ width: '97%' }}
+                    name='textInput'
+                    onChange={handleChange}
                   />
                   <div className="textfieldInputsGroup3">
                     <TextField
                       fullWidth 
                       id=""
                       label="Guests"
-                      maxRows={2}
                       inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                       placeholder="Number of guests attending"
+                      style={{ width: '97%' }}
                     />
                   </div>
-                  <div className="textfieldInputsGroup2">
+                  {/* <div className="textfieldInputsGroup2">
                     <TextField
                       id="outlined-multiline-flexible"
                       label="Your destination"
-                      multiline
-                      maxRows={2}
                     />
                     <TextField
                       id="outlined-multiline-flexible"
                       label="Your destination"
-                      multiline
-                      maxRows={2}
                     />
-                  </div>
+                  </div> */}
 
-                  <Slider
+                  {/* <Slider
                     getAriaLabel={() => 'Minimum distance shift'}
                     value={value2}
                     onChange={handleChange}
                     valueLabelDisplay="auto"
                     getAriaValueText={valuetext}
                     disableSwap
-                  />
+                  /> */}
                   
                   <Button 
                       size="small"

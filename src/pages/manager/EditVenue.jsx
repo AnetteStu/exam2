@@ -48,23 +48,23 @@ export default function EditVenue() {
         const json = await res.json();
         setVenue(json);
 
-          setName(json.name);
-          setDescription(json.description)
-          setPrice(json.price)
-          setMedia(json.media)
-          setMaxGuests(json.maxGuests)
-          setRating(json.rating)
+        setName(json.name);
+        setDescription(json.description)
+        setPrice(json.price)
+        setMedia(json.media)
+        setMaxGuests(json.maxGuests)
+        setRating(json.rating)
 
-          setAddress(json.location.address)
-          setCity(json.location.city)
-          setZip(json.location.zip)
-          setCountry(json.location.country)
-          setContinent(json.location.continent)
-
-          if(json.meta.wifi === true) {
-            // setWifi(json.meta.wifi)
-            setWifi(true)
-          }
+        setAddress(json.location.address)
+        setCity(json.location.city)
+        setZip(json.location.zip)
+        setCountry(json.location.country)
+        setContinent(json.location.continent)
+        
+        setWifi(json.meta.wifi)
+        setParking(json.meta.parking)
+        setBreakfast(json.meta.breakfast)
+        setPets(json.meta.pets)
         
       } catch (error) {
         console.log(error);
@@ -77,7 +77,6 @@ export default function EditVenue() {
   document.title = `Edit ${venue.name}`
 
   if (isLoading || !venue) {
-    // checkAmenities()
     return (<i className="fa-solid fa-gear fa-spin"></i>)
   }
 
@@ -96,9 +95,6 @@ export default function EditVenue() {
     const checked = e.target.checked;
     
     if(e.target.name === 'name') {
-      // if(!value) {
-      //   value = ""
-      // }
       setName(value)
     }
     if(e.target.name === 'description') {
@@ -109,9 +105,9 @@ export default function EditVenue() {
       setPrice(Number(value))
     }
 
-    if(e.target.name === 'media') {
-      setMedia(value)
-    }
+    // if(e.target.name === 'media') {
+    //   setMedia(value)
+    // }
 
 
     if(e.target.name === 'maxGuests') {
@@ -137,20 +133,27 @@ export default function EditVenue() {
       setContinent(value)
     }
 
-    // Meta
+    if(e.target.name === "media") {
+      let txt = value
+      const media = txt.split(",")
+      setMedia(media)
+      console.log(media);
+    }
 
-    if(e.target.name === 'wifi') {
-      // setWifi(checked)
-    }
-    if(e.target.name === 'parking') {
-      setParking(checked)
-    }
-    if(e.target.name === 'breakfast') {
-      setBreakfast(checked)
-    }
-    if(e.target.name === 'pets') {
-      setPets(checked)
-    }
+    // // Meta
+
+    // if(e.target.name === 'wifi') {
+    //   // setWifi(checked)
+    // }
+    // if(e.target.name === 'parking') {
+    //   setParking(checked)
+    // }
+    // if(e.target.name === 'breakfast') {
+    //   setBreakfast(checked)
+    // }
+    // if(e.target.name === 'pets') {
+    //   setPets(checked)
+    // }
 
     // console.log(venue.id);
   }
@@ -175,7 +178,7 @@ export default function EditVenue() {
   const inputs = {
     name: name,
     description: description,
-    media: [media],
+    // media: [media],
     price: price,
     maxGuests: maxGuests,
     rating: rating,
@@ -183,13 +186,19 @@ export default function EditVenue() {
     meta,
   }
 
+    inputs.media = media
+
   const handleEdit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    // PutWithToken(`${BASE_URL}${VENUES}${id}`, inputs, id);
+    PutWithToken(`${BASE_URL}${VENUES}${id}`, inputs, id);
   }
 
-  // Destructuring venue for inputs 
+  function handleDeleteVenue() {
+    if(window.confirm("Are you sure you want to delete this venue?")) {
+      DeleteVenueWithToken(`${BASE_URL}${VENUES}${id}`)
+    }
+  }
   
   return (
     <div>
@@ -198,67 +207,80 @@ export default function EditVenue() {
         <div className="textfieldInputsGroup">
           <div className="textfieldInputsGroup2">
             <TextField
+              fullWidth
               autoFocus={true}
               id="outlined-multiline-flexible"
               label="Name"
               name="name" 
-              value={inputs.name || venue.name || ""} 
+              // value={inputs.name} 
+              defaultValue={venue.name }
               onChange={handleChange}
             />
-
-            <TextField
-                fullWidth
-                id="outlined-multiline-flexible"
-                label="Media"
-                name="media" 
-                value={inputs.media || venue.media || ""} 
-                onChange={handleChange}
-                placeholder="Img1 img2 img3"
-              />
           </div>
           <div className="textfieldInputsGroup3">
             <TextField
               id="outlined-multiline-flexible"
               label="Description"
               name="description" 
-              value={inputs.description || venue.description || ""} 
+              // value={inputs.description} 
+              defaultValue={venue.description }
               onChange={handleChange}
               multiline
               maxRows={10}
             />
           </div>
           <div className="textfieldInputsGroup2">
+
+           {/* {venue.media.length > 0 
+            ? venue.media.map((image) => {
+            <div>eee</div>
+           }) 
+           
+           : ""} */}
             <TextField
-              inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                fullWidth
+                multiline
+                id="outlined-multiline-flexible"
+                label="Media"
+                name="media" 
+                // value={inputs.media} 
+                defaultValue={venue.media}
+                onChange={handleChange}
+                placeholder="Img1 img2 img3"
+              />
+          </div>
+          <div className="textfieldInputsGroup2">
+            <TextField
               id="outlined-multiline-flexible"
               label="Price"
               name="price" 
-              value={inputs.price || venue.price || 0} 
-              placeholder=""
-              onChange={handleChange}
-              multiline
-              maxRows={2}
+              // value={inputs.price || venue.price || 0} 
+              defaultValue={venue.price} 
+              inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 99999999 }}
               type="number"
+              onChange={handleChange}
             />
             <TextField
               id="outlined-multiline-flexible"
               label="Max Guests"
               name="maxGuests" 
-              value={inputs.maxGuests || venue.maxGuests || 0} 
+              // value={inputs.maxGuests || venue.maxGuests || 0} 
+              defaultValue={venue.maxGuests}
               placeholder="Max 100"
+              inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0 , max: 100 }}
+              type="number"
               onChange={handleChange}
-              multiline
-              maxRows={2}
             />
             <TextField
               id="outlined-multiline-flexible"
               label="Rating"
               name="rating" 
-              value={inputs.rating || venue.rating || 0} 
+              // value={inputs.rating || venue.rating || 0} 
+              defaultValue={venue.rating}
               placeholder="Max 5"
+              inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 5 }}
+              type="number"
               onChange={handleChange}
-              multiline
-              maxRows={2}
             />
           </div>
           <div className="textfieldInputsGroup2">
@@ -266,29 +288,28 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Address"
               name="address" 
-              value={inputs.location.address || location.address || ""} 
+              // value={inputs.location.address || location.address || ""} 
+              defaultValue={location.address}
               onChange={handleChange}
-              multiline
-              maxRows={2}
             />
             <TextField
               id="outlined-multiline-flexible"
               label="City"
               name="city" 
-              value={inputs.location.city || location.city || ""} 
+              // value={inputs.location.city || location.city || ""} 
+              defaultValue={location.city}
               onChange={handleChange}
-              multiline
-              maxRows={2}
             />
             <TextField
               id="outlined-multiline-flexible"
               label="Zip"
               name="zip" 
-              value={inputs.location.zip || location.zip || ""} 
+              // value={inputs.location.zip || location.zip || ""} 
+              defaultValue={location.zip}
               placeholder="0000"
+              inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 9999 }}
+              type="number"
               onChange={handleChange}
-              multiline
-              maxRows={2}
             />
           </div>
           <div className="textfieldInputsGroup2">
@@ -296,196 +317,60 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Country"
               name="country" 
-              value={inputs.location.country || location.country || ""} 
+              // value={inputs.location.country || location.country || ""} 
+              defaultValue={location.country}
               onChange={handleChange}
-              multiline
-              maxRows={2}
             />
             <TextField
               id="outlined-multiline-flexible"
               label="Continent"
               name="continent" 
-              value={inputs.location.continent || location.continent || ""} 
+              // value={inputs.location.continent || location.continent || ""} 
+              defaultValue={location.continent}
               onChange={handleChange}
-              multiline
-              maxRows={2}
             />
           </div>
         </div>
-        {/* <label>Name:
-            <input 
-              type="text" 
-              name="name" 
-              value={inputs.name || venue.name || ""}
-              placeholder={name}
-              onChange={handleChange}
-            />
-        </label> */}
-        {/* <label>Description:
-            <input 
-              type="text" 
-              name="description" 
-              value={inputs.description || venue.description || ""} 
-              placeholder={description}
-              onChange={handleChange} 
-            />
-        </label> */}
-
-        {/* <label>Media:
-            <input 
-              type="text" 
-              name="media" 
-              value={inputs.media || venue.media || ""} 
-              onChange={handleChange}
-              // placeholder="Media1, media2, media3.."
-            />
-        </label> */}
-
-        {/* <br/>
-        <label>Price:
-            <input 
-              type="number" 
-              name="price" 
-              value={inputs.price || venue.price || 0} 
-              onChange={handleChange}
-              min={1}
-              max={999999}
-            />
-        </label>
-        <label>Max Guests:
-            <input 
-              type="number" 
-              name="maxGuests" 
-              value={inputs.maxGuests || venue.maxGuests || 0} 
-              onChange={handleChange}
-              min={1}
-              max={500}
-            />
-        </label>
-        <label>Rating:
-            <input 
-              type="number" 
-              name="rating" 
-              value={inputs.rating || venue.rating || 0} 
-              onChange={handleChange}
-              max={5}
-              min={0}
-            />
-        </label>
-
-        <br/> */}
-
-        {/* Location */}
-        {/* <label>Address:
-            <input 
-              type="text" 
-              name="address" 
-              value={inputs.location.address || location.address || ""} 
-              onChange={handleChange}
-            />
-        </label>
-        <label>City:
-            <input 
-              type="text" 
-              name="city" 
-              value={inputs.city || location.city || ""} 
-              onChange={handleChange}
-            />
-        </label>
-        <label>Zip:
-            <input 
-              type="number" 
-              name="zip" 
-              value={inputs.zip || location.zip || 0} 
-              onChange={handleChange}
-              max={9999}
-              min={0}
-            />
-        </label>
-        <label>Country:
-            <input 
-              type="text" 
-              name="country" 
-              value={inputs.country || location.country || ""} 
-              onChange={handleChange}
-            />
-        </label>
-        <label>Continent:
-            <input 
-              type="text" 
-              name="continent" 
-              value={inputs.continent || location.continent || ""} 
-              onChange={handleChange}
-            />
-        </label> */}
-        {/* Autocomplete for countries and/or continents? https://www.w3schools.com/howto/howto_js_autocomplete.asp */}
-        {/* <br/> */}
-
         {/* Meta */}
-        <label>Wifi:
-            <input 
-              type="checkbox" 
-              name="wifi" 
-              value={inputs.wifi } 
-              onChange={handleChange}
-            />
-        </label>
-        <label>Parking:
-            <input 
-              type="checkbox" 
-              name="parking" 
-              value={inputs.parking } 
-              onChange={handleChange}
-            />
-        </label>
-        <label>Breakfast:
-            <input 
-              type="checkbox" 
-              name="breakfast" 
-              value={inputs.breakfast } 
-              onChange={handleChange}
-            />
-        </label>
-        <label>Pets:
-            <input 
-              type="checkbox" 
-              name="pets" 
-              value={inputs.pets } 
-              onChange={handleChange} 
-            />
-        </label>
-        {/* <label>Wifi:
-            <input 
-              type="checkbox" 
-              name="wifi" 
-              value={inputs.wifi || venue.meta.wifi || false} 
-              onChange={handleChange}
-            />
-        </label>
-        <label>Parking:
-            <input 
-              type="checkbox" 
-              name="parking" 
-              value={inputs.parking || venue.meta.parking || false} 
-              onChange={handleChange}
-            />
-        </label>
-        <label>Breakfast:
-            <input 
-              type="checkbox" 
-              name="breakfast" 
-              value={inputs.breakfast || venue.meta.breakfast || false} 
-              onChange={handleChange}
-            />
-        </label>
-        <label>Pets:
-            <input 
-              type="checkbox" 
-              name="pets" 
-              value={inputs.pets || venue.meta.pets || false} 
-              onChange={handleChange}
-            />
-        </label> */}
+        <div className="meta">
+          <label>Wifi:
+              <input 
+                type="checkbox" 
+                name="wifi" 
+                // value={inputs.wifi } 
+                defaultChecked={meta.wifi}
+                onChange={handleChange}
+              />
+          </label>
+          <label>Parking:
+              <input 
+                type="checkbox" 
+                name="parking" 
+                // value={inputs.parking } 
+                defaultChecked={meta.parking}
+                onChange={handleChange}
+              />
+          </label>
+          <label>Breakfast:
+              <input 
+                type="checkbox" 
+                name="breakfast" 
+                // value={inputs.breakfast } 
+                defaultChecked={meta.breakfast}
+                onChange={handleChange}
+              />
+          </label>
+          <label>Pets:
+              <input 
+                type="checkbox" 
+                name="pets" 
+                // value={inputs.pets } 
+                defaultChecked={meta.pets}
+                onChange={handleChange} 
+              />
+          </label>
+        </div>
+        
         <Button 
           size="small"
           variant="contained" 
@@ -493,9 +378,58 @@ export default function EditVenue() {
           id="defaultButton"
           type="submit"
           >
-          Submit New Venue
-        </Button>  
+          Submit edit
+        </Button>
+        <i class="fa-solid fa-trash fa-xl" onClick={handleDeleteVenue}></i>  
       </form>
     </div>
   )
+}
+
+async function PutWithToken(url, data) {
+  console.log(data);
+  // let id = useParams();
+  try {
+    console.log(url, data);
+    const fetchOptions = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    };
+
+    const res = await fetch(url, fetchOptions);
+    const json = await res.json();
+    console.log(json);
+
+    if(json.id) {
+      window.location.replace(`/${VENUES}${json.id}`)
+    }
+
+    
+  } catch(error) {
+    console.log(error);
+  }
+}
+
+async function DeleteVenueWithToken(url) {
+  try {
+    const fetchOptions = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+    };
+    
+    const res = await fetch(url, fetchOptions);
+    const json = await res.json();
+    console.log(json);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    window.location.replace("/overview");
+  }
 }

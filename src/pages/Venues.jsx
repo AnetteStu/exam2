@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { BASE_URL, VENUES } from "../constants/API";
 import placeholder from "../assets/placeholder.png"
 
@@ -14,7 +14,10 @@ export default function Venues() {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [searchText, setSearchText] = useState('');
-  let {id} = useParams();
+  const query = useLocation();
+
+  const venueSearch = query.search.split("?")[1]
+  console.log(venueSearch);
 
   useEffect(() => {
     async function getData(url) {
@@ -24,15 +27,17 @@ export default function Venues() {
       const res = await fetch(url);
       const json = await res.json();
       setVenues(json);
-
       setIsLoading(false);
+      if(!venueSearch == "") {
+        setSearchText(venueSearch)
+      }
 
     } catch (error) {
       setIsLoading(false);
       setIsError(true);
     }
-  }getData(`${BASE_URL}${VENUES}?`);
-}, [id]);
+  }getData(`${BASE_URL}${VENUES}`);
+}, []);
 
 if (isLoading) {
   return (<i className="fa-solid fa-circle-notch fa-spin"></i>)
@@ -41,22 +46,11 @@ if (isLoading) {
 if (isError) {
   return (
     <>
-    <i className="fa-solid fa-circle-exclamation"></i>
-    <div>Error loading data!</div>
+      <i className="fa-solid fa-circle-exclamation"></i>
+      <div>Error loading data!</div>
     </>
   )
 } 
-
-// function handleSearch(e) {
-//   const value = e.target.value;
-//   if(e.target.name === 'search') {
-//     setSearchText(value)
-//     // console.log(searchText);
-//   }
-// }
-// const query ={
-//   txtInput: searchText
-// }
 
   return (
     <div className="venuesResultPage">

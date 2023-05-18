@@ -6,8 +6,6 @@ import { useState } from 'react';
 
 import { user } from "../constants/API";
 
-let loginError = false
-
 export async function login (url, data) {
   console.log(url, data);
   // window.location.href(`/profile/+ ${user}`)
@@ -40,11 +38,9 @@ export async function login (url, data) {
       window.location.replace(`/profile`);
     }
 
-    if(json.statusCode === 401) {
-      loginError = true
+    if(json.statusCode === 401 || json.statusCode === 400) {
+      window.alert(`Login attempt failed, please try with another email/password! Message: ${json.errors[0].message}`)
     }
-
-    return loginError
     
   } catch (error) {
     console.log(error);
@@ -75,7 +71,6 @@ export default function Login() {
   }
 
   const handleLogin = (e) => {
-    console.log(loginError);
     e.preventDefault();
     // console.log(inputs);
     login(`${BASE_URL}${LOGIN}`, inputs);
@@ -94,7 +89,7 @@ export default function Login() {
           id="outlined-multiline-flexible"
           label="Email"
           name="email" 
-          // inputProps={{pattern: "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"}}
+          // inputProps={{pattern: "/^\S+@\S+\.\S+$/" }}
           placeholder="name@domain.com"
           value={inputs.email || ""} 
           onChange={handleChange}
@@ -128,7 +123,6 @@ export default function Login() {
           </FormControl>
         </div>
       </div>
-      {loginError === true ? <div>rhmerh</div> : ""}
       <div className="center">
         <Button 
           size="small"

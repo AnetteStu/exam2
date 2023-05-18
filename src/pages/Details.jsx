@@ -173,6 +173,8 @@ function RenderVenue({id, name, description, price, guests, images, meta, locati
                       onClick={handleBooking}
               >Book Venue</Button>
             </div>
+            {owner.name === user ? <div className="venueOwnerOptions"> <div><i class="fa-solid fa-trash fa-xl" onClick={handleDeleteVenue}></i></div><div><Link to={`/edit/${id}`}><i className="fa-solid fa-file-pen fa-xl"></i></Link></div></div> : ""}
+            {/* <input type="button" value="Delete" id="defaultButton" onClick={handleDeleteVenue}/> */}
             <div>View available Booking times</div>
             {/* <Calendar start={bookings.dateFrom} end={bookings.dateTo}/> */}
             <div className="bookings">{bookings}</div>
@@ -190,7 +192,6 @@ function RenderVenue({id, name, description, price, guests, images, meta, locati
               </Marker>
             </MapContainer> */}
     
-            {owner.name === user ? <div className="venueOwnerOptions"> <div><input type="button" value="Delete" id="defaultButton"  onClick={handleDeleteVenue}/></div><div><Link to={`/edit/${id}`}><i className="fa-solid fa-file-pen fa-xl"></i></Link></div></div> : ""}
           </>
         )
       }

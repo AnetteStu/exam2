@@ -7,7 +7,6 @@ import { login } from "./Login";
 
 
 export default function Register() {
-
   async function RegisterUser (url, data) {
     // const [error, setError] = useState("")
     console.log(url, data);
@@ -26,7 +25,7 @@ export default function Register() {
       console.log(json);
       
       if(json.statusCode === 400) {
-        window.alert(json.errors[0].message)
+        window.alert(`Registration attempt failed! Message: ${json.errors[0].message}`)
       }
   
       if(json.id) {
@@ -37,7 +36,6 @@ export default function Register() {
         }
         login(loginUrl, loginData)
       }
-      
   
     } catch (error) {
       console.log(error);
@@ -58,15 +56,6 @@ export default function Register() {
 
   document.title = `Register`
   const [inputs, setInputs] = useState({});
-
-  // const testuser = {
-  //   name: "kadstestest",
-  //   email: "kadstestest@noroff.no",
-  //   avatar: "",
-  //   venueManager: true,
-  //   password: "someawesomepasswordagain"
-  // }
-  // console.log(testuser);
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -98,6 +87,7 @@ export default function Register() {
           fullWidth
           autoFocus={true}
           // id="outlined-multiline-flexible"
+          inputProps={{pattern: `^[^0-9_!¡?÷?¿\+=@#$%ˆ&*(){}|~<>;:[]]{2,}$`}}
           label="Name"
           name="name" 
           value={inputs.name || ""} 
@@ -124,7 +114,7 @@ export default function Register() {
           name="email" 
           value={inputs.email || ""} 
           onChange={handleChange}
-          inputProps={{pattern: "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"}}
+          // inputProps={{pattern: "/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/"}}
           placeholder="name@domain.com"
         />
         </div>

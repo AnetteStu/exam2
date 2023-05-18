@@ -73,13 +73,12 @@ useEffect(() => {
             
             <div key={venue.id}>
               <Link to={`/venues/${venue.id}`} >
-                <div>{venue.name}</div>
+                <div><Link to={`/edit/${venue.id}`}><i className="fa-solid fa-file-pen"></i></Link> {venue.name}</div>
               </Link>
-              {venue.bookings === [] ? "" : 
-              
-              <div>
-                BOOKINGS {venue.bookings.length}
-              </div>}
+              {venue.bookings === [] 
+                ? "" 
+                : <div> BOOKINGS {venue.bookings.length} </div>
+              }
             </div>
           ))}
         </div>

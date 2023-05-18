@@ -95,12 +95,13 @@ export default function Booker(params) {
         {/* <input type="submit" value="Checkout!" onClick={handleBooking}></input> */}
         {/* <Link to="/newbooking/" value={inputs} > Book Venue!</Link>  */}
       </form>
-        <Button size="small"
-                  variant="contained" 
-                  className="defaultButton"
-                  id="defaultButton" 
-                  onClick={handleBooking}
-          >Book Venue</Button>
+        <Button 
+          size="small"
+          variant="contained" 
+          className="defaultButton"
+          id="defaultButton" 
+          onClick={handleBooking}
+        >Book Venue</Button>
     </div>
   )
 }
