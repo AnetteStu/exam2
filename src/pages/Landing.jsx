@@ -84,7 +84,7 @@ export default function Landing() {
         <Row className="justify-content-md-center" >
           <Col md="auto" >            
               <Card 
-                style={{ width: '25rem' }}
+                // style={{ width: '25rem' }}
                 className="text-center">
                 <Card.Title></Card.Title>
               <Box

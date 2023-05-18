@@ -188,7 +188,7 @@ export async function getProfile(url) {
       const res = await fetch(url+user, fetchOptions);
       const json = await res.json();
   
-      console.log(json);
+      // console.log(json);
   
     } catch(error) {
       console.log(error);

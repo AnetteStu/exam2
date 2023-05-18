@@ -15,21 +15,21 @@ import { useEffect, useState } from 'react';
 export default function Navigation() {
   const [href, setHref] = useState("");
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   useEffect(() => {
     setHref(window.location.pathname)
   },[location]) 
   getProfile(`${BASE_URL}${PROFILES}`)
 
   function handleLogoutClick() {
-    if(window.confirm("Are you sure you want to log?")) {
+    if(window.confirm("Are you sure you want to log out?")) {
       logoutUser()
     }
   }
 
   return (
-    <Navbar  variant="light" expand="lg" className={href === "/" ? `customLandingNav` : `customNav`} >
-      <Container className={``}>
+    <Navbar variant="light" expand="xl" className={href === "/" ? `customLandingNav` : `customNav`} >
+      <Container expand="xl" className='customNavWidth'>
         <Link to="/" className="navbar-brand">Holidaze</Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">

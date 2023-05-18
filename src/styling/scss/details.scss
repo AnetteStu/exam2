@@ -60,11 +60,11 @@
 }
 
 .bookedDates {
-  background: linear-gradient(0.37turn, $btnColor 16%, rgba(214, 214, 214, 0.0)77%);
+  background: linear-gradient(0.37turn, $Accent 16%, rgba(214, 214, 214, 0.0)77%);
   padding: 0 .4em;
   margin: .2em;
   border-radius: .5em;
-  color: white;
+  // color: white;
 }
 
 .venueOwnerOptions {

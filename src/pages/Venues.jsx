@@ -17,7 +17,7 @@ export default function Venues() {
   const query = useLocation();
 
   const venueSearch = query.search.split("?")[1]
-  console.log(venueSearch);
+  // console.log(venueSearch);
 
   useEffect(() => {
     async function getData(url) {

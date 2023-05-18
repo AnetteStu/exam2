@@ -13,15 +13,31 @@
   margin-bottom: 1em;
 }
 
+.card {
+  width: 99%;
+}
+
 @media screen and (min-width: 767px) and (max-width: 1023px) {
   .customNav {
     background: #E48025;
     color: white;
+  }
+  .customNavWidth {
+    width: 70%;
+  }
+  .card {
+    width: 25rem;
   }
 }
 @media screen and (min-width: 1023px) {
   .customNav {
     background: #E48025;
     color: white;
+  }
+  .customNavWidth {
+    width: 58%;
+  }
+  .card {
+    width: 25rem;
   }
 }/*# sourceMappingURL=customBootstrap.css.map */

@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   margin-top: 1em;
+  margin-bottom: 2em;
 }
 
 .venueCard {
@@ -17,12 +18,14 @@
   border-radius: .5em;
   color: #574a42;
   max-width: 15em;;
+  padding: 0 0.5em;
 
   transition: .2s ease-in-out;
 
+
   &:hover {
     transform: scale(1.1);
-    box-shadow: rgba(230, 145, 88, 0.241) 3px 2px 5px 3px;
+    box-shadow: rgba(230, 145, 88, 0.241) 6px 10px 4px 0px;
   }
 
   a {
@@ -84,6 +87,11 @@
   .venues {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
+    // justify-content: space-between;
+    // width: fit-content;
+  }
+
+  .venueLink {
+    margin: 1% 2%;
   }
 }

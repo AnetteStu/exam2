@@ -47,7 +47,7 @@ useEffect(() => {
   document.title = `Overview`
   // console.log(id);
 
-  console.log(venues);
+  // console.log(venues);
   // venues.forEach(Venue) 
 
   if (isLoading) {
@@ -70,15 +70,15 @@ useEffect(() => {
         <div>
           <h2>Your Venues</h2>
           {venues.length === 0 ? <div>No venues yet</div> : venues.map((venue) => (
-            
             <div key={venue.id}>
-              <Link to={`/venues/${venue.id}`} >
-                <div><Link to={`/edit/${venue.id}`}><i className="fa-solid fa-file-pen"></i></Link> {venue.name}</div>
-              </Link>
-              {venue.bookings === [] 
-                ? "" 
-                : <div> BOOKINGS {venue.bookings.length} </div>
-              }
+              <div>
+                <Link to={`/edit/${venue.id}`}><i className="fa-solid fa-file-pen"></i></Link>
+                <Link to={`/venues/${venue.id}`}><div> {venue.name} </div></Link>
+                {venue.bookings === [] 
+                  ? "" 
+                  : <div> BOOKINGS {venue.bookings.length} </div>
+                }
+              </div>
             </div>
           ))}
         </div>

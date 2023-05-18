@@ -62,7 +62,7 @@ export default function Details() {
     window.location.replace(`/${VENUES}`)
   }
 
-  console.log(venue);
+  // console.log(venue);
 
   if (venue) {
     return (
@@ -120,11 +120,11 @@ function RenderVenue({id, name, description, price, guests, images, meta, locati
         
         const res = await fetch(`${BASE_URL}${VENUES}${id}`, fetchOptions);
         const json = await res.json();
-        console.log(json);
+        // console.log(json);
       } catch (error) {
         console.log(error);
       } finally {
-        window.location.reload();
+        window.location.replace("/overview");
       }
     }
     if(id) {

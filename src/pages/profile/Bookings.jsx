@@ -36,7 +36,7 @@ export default function Bookings() {
         if(json === []) {
         }
         setBookings(json);
-        console.log(bookings);
+        // console.log(bookings);
         setIsLoading(false);
   
         } catch (error) {

@@ -1,9 +1,14 @@
 $image: url("../../assets/background.jpg");
 
+$Primary: #404040;
+$Secondary: #ffffff;
+$PrimaryButton: #E48025;
+$SecondaryButton: #eeeaf6;
+$Accent: #ffd2bb;
+
 // Colors
-$btnColor: #E48025;
+$btnColor: $PrimaryButton;
 $txtColor: white;
 
 // Borders 
-
 $radius: .2em;

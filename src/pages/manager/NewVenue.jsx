@@ -156,7 +156,7 @@ export default function NewVenue() {
                   name="media" 
                   value={inputs.media} 
                   onChange={handleChange}
-                  placeholder="Img1 img2 img3"
+                  placeholder="Link1, link2, link3"
                   required
                 />
               </div>
