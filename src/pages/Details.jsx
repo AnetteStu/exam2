@@ -7,15 +7,6 @@ import { useEffect, useState } from "react";
 import { BASE_URL, BOOKING_OWNER, VENUES, token, user } from "../constants/API";
 import Rating from "../components/Rating";
 import { Button } from "@mui/material";
-// import Calendar from "../components/Calendar";
-
-// import {
-//   MapContainer,
-//   TileLayer,
-//   Marker,
-//   Popup
-// } from 'https://cdn.esm.sh/react-leaflet'
-
 
 export default function Details() {
   const [venue, setVenue] = useState([]);
@@ -23,7 +14,6 @@ export default function Details() {
   const [isError, setIsError] = useState(false);
   let {id} = useParams();
   const url = BASE_URL+VENUES+id+BOOKING_OWNER
-  // console.log(url);
 
   useEffect(() => {
     async function getData() {
@@ -62,8 +52,6 @@ export default function Details() {
     window.location.replace(`/${VENUES}`)
   }
 
-  // console.log(venue);
-
   if (venue) {
     return (
       <RenderVenue
@@ -95,9 +83,6 @@ export default function Details() {
 }
 
 function RenderVenue({id, name, description, price, guests, images, meta, location, bookings, owner, rating}) {
-  // const [position, setPosition] = useState([0])
-  // setPosition = [51.505, -0.09]
-
   
   const navigate = useNavigate()
   const handleBooking = () => navigate(`/newbooking/${id}`)
@@ -120,7 +105,6 @@ function RenderVenue({id, name, description, price, guests, images, meta, locati
         
         const res = await fetch(`${BASE_URL}${VENUES}${id}`, fetchOptions);
         const json = await res.json();
-        // console.log(json);
       } catch (error) {
         console.log(error);
       } finally {
@@ -132,7 +116,6 @@ function RenderVenue({id, name, description, price, guests, images, meta, locati
           <>
           <Link to="/venues">Back</Link>
             <div className="venue">
-            {/* <div>{headerImage}</div> */}
               <div className="images">{images}</div>
               <div className="venueHeader">
                 <h1 className="venueName">
@@ -173,27 +156,48 @@ function RenderVenue({id, name, description, price, guests, images, meta, locati
                       onClick={handleBooking}
               >Book Venue</Button>
             </div>
-            {owner.name === user ? <div className="venueOwnerOptions"> <div><i class="fa-solid fa-trash fa-xl" onClick={handleDeleteVenue}></i></div><div><Link to={`/edit/${id}`}><i className="fa-solid fa-file-pen fa-xl"></i></Link></div></div> : ""}
-            {/* <input type="button" value="Delete" id="defaultButton" onClick={handleDeleteVenue}/> */}
+            {owner.name === user 
+            ? 
+              <div className="venueOwnerOptions"> 
+                <div>
+                  <i className="fa-solid fa-trash fa-xl" onClick={handleDeleteVenue}></i>
+                </div>
+                <div><Link to={`/edit/${id}`}>
+                  <i className="fa-solid fa-file-pen fa-xl"></i></Link>
+                </div>
+              </div> 
+              : ""}
+
             <div>View available Booking times</div>
-            {/* <Calendar start={bookings.dateFrom} end={bookings.dateTo}/> */}
             <div className="bookings">{bookings}</div>
-    
-            {/* <div>View in map</div> */}     
-            {/* <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <Marker position={position}>
-                <Popup>
-                  A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-              </Marker>
-            </MapContainer> */}
-    
           </>
         )
       }
     }
 }
+
+// import Calendar from "../components/Calendar";
+
+// import {
+//   MapContainer,
+//   TileLayer,
+//   Marker,
+//   Popup
+// } from 'https://cdn.esm.sh/react-leaflet'
+
+
+ {/* <Calendar start={bookings.dateFrom} end={bookings.dateTo}/> */}
+// const [position, setPosition] = useState([0])
+// setPosition = [51.505, -0.09]
+{/* <div>View in map</div>    
+<MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+  <TileLayer
+    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+  />
+  <Marker position={position}>
+    <Popup>
+      A pretty CSS3 popup. <br /> Easily customizable.
+    </Popup>
+  </Marker>
+</MapContainer>  */}

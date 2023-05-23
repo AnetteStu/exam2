@@ -107,6 +107,7 @@ export default function Landing() {
                     //   width: "100%",
                     // }}
                     style={{ width: '97%' }}
+                    color="primary"
                     name='textInput'
                     onChange={handleChange}
                   />

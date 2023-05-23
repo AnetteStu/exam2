@@ -1,7 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import Container from "@mui/material/Container"
-
-// import './styling/css/default.css'
 import './styling/css/customMUI.css'
 
 // Ract Router Elements
@@ -10,7 +8,6 @@ import Layout from './components/Layout';
 import Landing from './pages/Landing';
 import Venues from './pages/Venues';
 import About from './pages/About';
-// import Contact from './pages/Contact';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Details from './pages/Details';
@@ -39,7 +36,6 @@ function App() {
               <Route path='/venues' element={<Venues/>}/>
               <Route path='/venues/:id' element={<Details/>}/>
               <Route path='/about' element={<About/>}/>
-              {/* <Route path='/contact' element={<Contact/>}/> */}
 
               <Route path='/register' element={<Register/>}/>
               <Route path='/login' element={<Login/>}/>
@@ -50,7 +46,6 @@ function App() {
               <Route path='/settings/' element={<Settings/>}/>
 
               <Route path='/newbooking/:id' element={<BookingPage/>} />
-
               
               <Route path='/overview/' element={<Overview/>}/>
               <Route path='/new/' element={<NewVenue/>}/>
@@ -59,7 +54,6 @@ function App() {
               <Route path='/venues/*' element={<NoPage/>} />
             </Route>
           </Routes>
-          
         </div>
       </Container>
     </>

@@ -10,44 +10,14 @@ export default function Settings() {
   if(!token) {
     window.location.replace("/")
   }
-
-  // const [selectedFile, setSelectedFile] = useState(null);
   const [avatar, setAvatar] = useState("");
 
   const handleChange = e => {
-    // setAvatar(e.target.files[0])
     setAvatar(e.target.value)
   }
-
-  // const handleChange = (event) => {
-  //   const name = event.target.name;
-  //   const value = event.target.value;
-  //   const file = event.target.files;
-
-  //   setInputs(values => ({...values, [name]: value}))
-  // }
-
-
-  // function handleChange(e) {
-    // const value = e.target.value;
-
-    // const value = e.target.value;
-    // if(e.target.name === 'avatar') {
-    //   setAvatar(value)
-    //   const formData = new FormData();
-    //   file = avatar.files[0]
-    // }
-    // if(e.target.name === 'avatar2') {
-    //   setAvatar2(value)
-    // }
-
-  // }
-  
   const inputs = {
     avatar: avatar
   }
-  
-  // console.log(inputs.avatar);
 
   const handleAvatarChange = (e) => {
     e.preventDefault();
@@ -56,34 +26,14 @@ export default function Settings() {
 
   return (
     <>
-
       <div className="profileContent">
-
         <ProfileNav/>
         <div>
             <h2>Settings</h2>
             <Avatar/>
 
             <form onSubmit={handleAvatarChange}>
-            {/* Set new avatar (link) */}
-
-              {/* <input 
-                type="file" 
-                name="avatar" 
-                // value={""} 
-                onChange={handleChange}
-                // multiple
-              /> */}
-
-              {/* <input 
-                type="text" 
-                name="avatar" 
-                value={inputs.avatar || ""} 
-                placeholder="image Url here"
-                onChange={handleChange}
-              /> */}
               <TextField
-                // id="firstInput outlined-multiline-flexible"
                 label="Image URL"
                 type="text" 
                 name="avatar" 
@@ -94,15 +44,6 @@ export default function Settings() {
                   width: "100%",
                 }}
               />
-
-
-              {/* <input 
-                type="file"
-                name="profilePic"
-                // value=""
-                onChange={handleChange}
-                multiple
-              /> */}
               <div className="center">
                 <Button 
                   size="small"
@@ -118,7 +59,6 @@ export default function Settings() {
           </div>
         </div>
     </>
-
   )
 }
 
@@ -139,8 +79,12 @@ async function putAvatarToken(url, data) {
     console.log(json);
 
     localStorage.setItem('avatar', json.avatar)
+    if(json.avatar) {
+      window.location.reload();
+    } else {
+      window.confirm(`An error occured: ${json.errors[0].message}`)
+    }
 
-    // window.location.reload();
     
   } catch(error) {
     console.log(error);

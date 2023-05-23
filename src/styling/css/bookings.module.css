@@ -9,5 +9,6 @@
 }
 .bookingInput input {
   background-color: transparent;
-  border: 2px solid gray;
+  border: 2px solid #E48025;
+  border-radius: 0.5em;
 }/*# sourceMappingURL=bookings.module.css.map */

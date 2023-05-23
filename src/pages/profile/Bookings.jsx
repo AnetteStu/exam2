@@ -36,7 +36,6 @@ export default function Bookings() {
         if(json === []) {
         }
         setBookings(json);
-        // console.log(bookings);
         setIsLoading(false);
   
         } catch (error) {
@@ -54,8 +53,8 @@ export default function Bookings() {
   if (isError) {
     return (
       <>
-      <i className="fa-solid fa-circle-exclamation"></i>
-      <div>Error loading data, please refresh!</div>
+        <i className="fa-solid fa-circle-exclamation"></i>
+        <div>Error loading data, please refresh!</div>
       </>
     )
   }   
@@ -119,13 +118,11 @@ export default function Bookings() {
                 <div className="center">
                   <Button 
                     size="small"
-                    // variant="contained" 
                     className="defaultButton"
                     id="defaultButton"
                     type="submit"
                     name="delete" 
                     value={booking.id}
-                  // data = {booking.id}
                     onClick={handleDelete}
                     >
                     Delete Booking

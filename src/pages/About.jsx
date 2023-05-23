@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom"
-
 export default function About() {
   document.title = `About`
   return (
@@ -27,9 +25,6 @@ export default function About() {
         <h3>Pets</h3>
         <p>The facility will have sufficient space for keeping of pets, ther's also excess space for crates and feeding stations for your companion. The Venue will also have plenty of space for your animal to roam and there's designated fenced-off spaces where you can let your pet roam freely if you so desire. </p>
       </div>
-
-      {/* <h4>Got any questions?</h4>
-      <Link to="/contact">Ask us!</Link> */}
     </div>
   )
 }

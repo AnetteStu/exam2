@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { BASE_URL, BOOKINGS, token } from "../constants/API"
-// import { bookWithToken, postWithToken } from "./tokenHandlers";
+import { token } from "../constants/API"
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
@@ -12,13 +11,12 @@ export default function Booker(params) {
   id = params.id
   maxGuests = params.maxGuests
 
-  // console.log(param);
-  // console.log(id, maxGuests);
-
 
   const [dateFrom, setDateFrom] = useState("");
   const [dateTo, setDateTo] = useState("");
   const [guests, setGuests] = useState(0);
+
+  const [dayDifference, setDayDifference] = useState(0)
 
   function handleChange(e) {
     const value = e.target.value;
@@ -32,6 +30,13 @@ export default function Booker(params) {
     if(e.target.name === 'guests') {
       setGuests(value)
     }
+
+    const fromDateCheck = new Date(dateFrom)
+    const toDateCheck = new Date(dateTo)
+    
+    const timeDifference = toDateCheck.getTime() - fromDateCheck.getTime()
+    setDayDifference (timeDifference / (1000 * 60 * 60 * 24)) 
+    console.log(dayDifference);
   }
 
   const inputs = {
@@ -43,11 +48,13 @@ export default function Booker(params) {
 
   const handleBooking = (e) => {
     e.preventDefault();
-    console.log(inputs);
+    // console.log(inputs);
+    console.log(dayDifference);
     // window.location.replace("/newbooking")
-    bookWithToken(`${BASE_URL}${BOOKINGS}`, inputs);
-    
+    // bookWithToken(`${BASE_URL}${BOOKINGS}`, inputs); 
   }
+
+  const today = new Date().toISOString().split("T")[0];
   
   return (
 
@@ -56,10 +63,13 @@ export default function Booker(params) {
 
       <div className={style.checkoutTotal}>
         <div>
-          Price: {params.price}<br/>
+          Price: {params.price} Max Guests: {params.maxGuests}
         </div>
+
         <div>
-          Total: {inputs.guests === 0 ? params.price : params.price*inputs.guests}
+          Days: {dayDifference} <br/>
+          Guests: {inputs.guests} <br/>
+          Total: {inputs.guests === 0 && dayDifference === 1 || dayDifference === 1 || inputs.guests === 0 ? params.price : (params.price*inputs.guests)*(1 + dayDifference)} 
         </div>
       </div>
 
@@ -70,6 +80,7 @@ export default function Booker(params) {
               type="date" 
               name="dateFrom" 
               value={inputs.dateFrom} 
+              min={today}
               onChange={handleChange}
             />
         </label>
@@ -78,6 +89,7 @@ export default function Booker(params) {
               type="date" 
               name="dateTo" 
               value={inputs.dateTo} 
+              min={dateFrom}
               onChange={handleChange}
             />
         </label>
@@ -85,7 +97,7 @@ export default function Booker(params) {
             <input 
               type="number" 
               name="guests" 
-              value={inputs.guests} 
+              defaultValue={inputs.guests} 
               onChange={handleChange}
               min={1}
               max={maxGuests}

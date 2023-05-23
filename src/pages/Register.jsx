@@ -8,7 +8,6 @@ import { login } from "./Login";
 
 export default function Register() {
   async function RegisterUser (url, data) {
-    // const [error, setError] = useState("")
     console.log(url, data);
     try {
       const postData = {
@@ -59,9 +58,10 @@ export default function Register() {
 
   const handleChange = (event) => {
     const name = event.target.name;
-    const value = event.target.value;
+    const value = event.target.value.trim();
     if (event.target.name === "email") {
       console.log(value);
+      
       if(value.toLowerCase().includes("@stud.noroff.no") ) {
         inputs.venueManager = true
         console.log(inputs);

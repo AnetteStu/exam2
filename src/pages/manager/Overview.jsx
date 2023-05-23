@@ -42,13 +42,7 @@ useEffect(() => {
 }getVenues(`${BASE_URL}${PROFILES}${user}/venues${ISBOOKED}`)
 }, [id]);
 
-// console.log(`${BASE_URL}${PROFILES}${user}/venues${ISBOOKED}` );
-
   document.title = `Overview`
-  // console.log(id);
-
-  // console.log(venues);
-  // venues.forEach(Venue) 
 
   if (isLoading) {
     return (<i className="fa-solid fa-circle-notch fa-spin"></i>)
@@ -83,7 +77,6 @@ useEffect(() => {
           ))}
         </div>
       </div>
-      
     </>
   )
 }

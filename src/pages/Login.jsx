@@ -1,5 +1,4 @@
 import { TextField, Button, FormControl, InputLabel, OutlinedInput, IconButton, InputAdornment } from "@mui/material"
-// import VisibilityOff from "@mui/"
 import { Link } from "react-router-dom"
 import { BASE_URL, LOGIN } from "../constants/API"
 import { useState } from 'react';
@@ -8,7 +7,6 @@ import { user } from "../constants/API";
 
 export async function login (url, data) {
   console.log(url, data);
-  // window.location.href(`/profile/+ ${user}`)
   try {
     const postData = {
       method: 'POST',
@@ -72,7 +70,6 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // console.log(inputs);
     login(`${BASE_URL}${LOGIN}`, inputs);
   }
 
@@ -94,45 +91,44 @@ export default function Login() {
           value={inputs.email || ""} 
           onChange={handleChange}
         />
-        </div>
-        <div className="textfieldInputsGroup2">
-          <FormControl sx={{ m: 1, width: '100%' }} variant="outlined" style={{margin:0}}>
-            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-            <OutlinedInput
-              required
-              name="password"
-              id="password"
-              value={inputs.password} 
-              onChange={handleChange}
-              // id="outlined-adornment-password"
-              type={showPassword ? 'text' : 'password'}
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
-                    edge="end"
-                  >
-                    {showPassword ? "Ø" : "O"}
-                  </IconButton>
-                </InputAdornment>
-              }
-              label="Password"
-            />
-          </FormControl>
-        </div>
       </div>
-      <div className="center">
-        <Button 
-          size="small"
-          variant="contained" 
-          className="defaultButton"
-          id="defaultButton"
-          type="submit"
-          >
-          Login
-        </Button>
+      <div className="textfieldInputsGroup2">
+        <FormControl sx={{ m: 1, width: '100%' }} variant="outlined" style={{margin:0}}>
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            required
+            name="password"
+            id="password"
+            value={inputs.password} 
+            onChange={handleChange}
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                >
+                  {showPassword ? "Ø" : "O"}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
+      </div>
+    </div>
+    <div className="center">
+      <Button 
+        size="small"
+        variant="contained" 
+        className="defaultButton"
+        id="defaultButton"
+        type="submit"
+        >
+        Login
+      </Button>
     </div>
         Don't have an account? <Link to="/register"> Register!</Link>  
   </form>

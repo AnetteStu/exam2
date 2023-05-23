@@ -13,7 +13,6 @@ export default function ProfileNav() {
           {isManager === "true" 
           ? <ul>Venues
               <li><Link to="/overview/">Overview</Link> </li>
-              {/* <li><Link to="/managevenue">Manage</Link> </li> */}
               <li><Link to="/new/">Create Venue</Link> </li>
           </ul> 
           : ""}

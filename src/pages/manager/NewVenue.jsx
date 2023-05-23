@@ -1,6 +1,4 @@
 import { useState } from "react";
-
-// import { BASE_URL, VENUES } from "../constants/API"
 import { BASE_URL, VENUES, isManager, token } from "../../constants/API";
 import ProfileNav from "../../components/ProfileNav";
 import { Button, TextField } from "@mui/material";
@@ -36,7 +34,6 @@ export default function NewVenue() {
     const checked = e.target.checked;
 
     setInputs(values => ({...values, [name]: value}))
-    // console.log(inputs);
     // Location
     if(e.target.name === 'address') {
       setAddress(value)
@@ -73,8 +70,7 @@ export default function NewVenue() {
       const media = txt.split(",")
       setMedia(media)
       console.log(media);
-    }
-    
+    } 
   }
 
   const location = {
@@ -93,15 +89,6 @@ export default function NewVenue() {
     breakfast: breakfast,
     pets: pets,
   }
-  
-  // let media = inputs.media
-  // let media1
-  // if(media) {
-  //   media.split(" ")
-  //   console.log("mediaFetch = " + typeof(media));
-  //   media1 = media[0]
-  // }
-  // inputs.media = media1
 
   inputs.media = media
   inputs.location = location
@@ -303,7 +290,6 @@ export default function NewVenue() {
               </Button>
             </div>
           </form>
-            {/* Autocomplete for countries and/or continents? https://www.w3schools.com/howto/howto_js_autocomplete.asp */}
         </div>
       </div>
     </>
@@ -332,6 +318,10 @@ async function postWithToken(url, data) {
     if(json.id) {
       window.location.replace(`/${VENUES}${json.id}`)
       return
+    }
+
+    if(json.error) {
+      window.confirm(`An error occured: ${json.errors[0].message}`)
     }
 
   } catch(error) {

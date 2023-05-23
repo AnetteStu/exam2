@@ -99,23 +99,17 @@ export default function EditVenue() {
     }
     if(e.target.name === 'description') {
       setDescription(value)
-    }
-    
+    }    
     if(e.target.name === 'price') {
       setPrice(Number(value))
     }
-
-    // if(e.target.name === 'media') {
-    //   setMedia(value)
-    // }
-
-
     if(e.target.name === 'maxGuests') {
       setMaxGuests(Number(value))
     }
     if(e.target.name === 'rating') {
       setRating(Number(value))
     }
+
     // Location
     if(e.target.name === 'address') {
       setAddress(value)
@@ -132,32 +126,16 @@ export default function EditVenue() {
     if(e.target.name === 'continent') {
       setContinent(value)
     }
-
+    // Media
     if(e.target.name === "media") {
       let txt = value
       const media = txt.split(",")
       setMedia(media)
       console.log(media);
     }
-
-    // // Meta
-
-    // if(e.target.name === 'wifi') {
-    //   // setWifi(checked)
-    // }
-    // if(e.target.name === 'parking') {
-    //   setParking(checked)
-    // }
-    // if(e.target.name === 'breakfast') {
-    //   setBreakfast(checked)
-    // }
-    // if(e.target.name === 'pets') {
-    //   setPets(checked)
-    // }
-
-    // console.log(venue.id);
   }
 
+  // Construction Inputs
   const location = {
     address: address,
     city: city,
@@ -178,7 +156,6 @@ export default function EditVenue() {
   const inputs = {
     name: name,
     description: description,
-    // media: [media],
     price: price,
     maxGuests: maxGuests,
     rating: rating,
@@ -186,7 +163,7 @@ export default function EditVenue() {
     meta,
   }
 
-    inputs.media = media
+  inputs.media = media
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -202,7 +179,7 @@ export default function EditVenue() {
   
   return (
     <div>
-    <h2>EditVenue</h2>
+      <h2>EditVenue</h2>
       <form onSubmit={handleEdit}>
         <div className="textfieldInputsGroup">
           <div className="textfieldInputsGroup2">
@@ -212,7 +189,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Name"
               name="name" 
-              // value={inputs.name} 
               defaultValue={venue.name }
               onChange={handleChange}
             />
@@ -222,7 +198,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Description"
               name="description" 
-              // value={inputs.description} 
               defaultValue={venue.description }
               onChange={handleChange}
               multiline
@@ -230,20 +205,12 @@ export default function EditVenue() {
             />
           </div>
           <div className="textfieldInputsGroup2">
-
-           {/* {venue.media.length > 0 
-            ? venue.media.map((image) => {
-            <div>eee</div>
-           }) 
-           
-           : ""} */}
             <TextField
                 fullWidth
                 multiline
                 id="outlined-multiline-flexible"
                 label="Media"
                 name="media" 
-                // value={inputs.media} 
                 defaultValue={venue.media}
                 onChange={handleChange}
                 placeholder="Img1 img2 img3"
@@ -254,7 +221,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Price"
               name="price" 
-              // value={inputs.price || venue.price || 0} 
               defaultValue={venue.price} 
               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 99999999 }}
               type="number"
@@ -264,7 +230,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Max Guests"
               name="maxGuests" 
-              // value={inputs.maxGuests || venue.maxGuests || 0} 
               defaultValue={venue.maxGuests}
               placeholder="Max 100"
               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0 , max: 100 }}
@@ -275,7 +240,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Rating"
               name="rating" 
-              // value={inputs.rating || venue.rating || 0} 
               defaultValue={venue.rating}
               placeholder="Max 5"
               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 5 }}
@@ -288,7 +252,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Address"
               name="address" 
-              // value={inputs.location.address || location.address || ""} 
               defaultValue={location.address}
               onChange={handleChange}
             />
@@ -296,7 +259,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="City"
               name="city" 
-              // value={inputs.location.city || location.city || ""} 
               defaultValue={location.city}
               onChange={handleChange}
             />
@@ -304,7 +266,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Zip"
               name="zip" 
-              // value={inputs.location.zip || location.zip || ""} 
               defaultValue={location.zip}
               placeholder="0000"
               inputProps={{ inputMode: 'numeric', pattern: '[0-9]*', min: 0, max: 9999 }}
@@ -317,7 +278,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Country"
               name="country" 
-              // value={inputs.location.country || location.country || ""} 
               defaultValue={location.country}
               onChange={handleChange}
             />
@@ -325,7 +285,6 @@ export default function EditVenue() {
               id="outlined-multiline-flexible"
               label="Continent"
               name="continent" 
-              // value={inputs.location.continent || location.continent || ""} 
               defaultValue={location.continent}
               onChange={handleChange}
             />
@@ -337,7 +296,6 @@ export default function EditVenue() {
               <input 
                 type="checkbox" 
                 name="wifi" 
-                // value={inputs.wifi } 
                 defaultChecked={meta.wifi}
                 onChange={handleChange}
               />
@@ -346,7 +304,6 @@ export default function EditVenue() {
               <input 
                 type="checkbox" 
                 name="parking" 
-                // value={inputs.parking } 
                 defaultChecked={meta.parking}
                 onChange={handleChange}
               />
@@ -355,7 +312,6 @@ export default function EditVenue() {
               <input 
                 type="checkbox" 
                 name="breakfast" 
-                // value={inputs.breakfast } 
                 defaultChecked={meta.breakfast}
                 onChange={handleChange}
               />
@@ -364,13 +320,11 @@ export default function EditVenue() {
               <input 
                 type="checkbox" 
                 name="pets" 
-                // value={inputs.pets } 
                 defaultChecked={meta.pets}
                 onChange={handleChange} 
               />
           </label>
         </div>
-        
         <Button 
           size="small"
           variant="contained" 
@@ -388,7 +342,6 @@ export default function EditVenue() {
 
 async function PutWithToken(url, data) {
   console.log(data);
-  // let id = useParams();
   try {
     console.log(url, data);
     const fetchOptions = {
@@ -408,6 +361,9 @@ async function PutWithToken(url, data) {
       window.location.replace(`/${VENUES}${json.id}`)
     }
 
+    if(json.error) {
+      window.confirm(`An error occured: ${json.errors[0].message}`)
+    }
     
   } catch(error) {
     console.log(error);

@@ -1,17 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { BASE_URL, BOOKINGS, PROFILE, token } from '../constants/API';
 
 export default function BookingSuccess() {
   document.title = `Booking succeeded`
   const [booking, setBooking] = useState("");
-  // const [search, setSearch] = useState("")
   let {id} = useParams()
 
   const url = BASE_URL+PROFILE+"/"+BOOKINGS+"?_venue=true"
-
-  console.log(url);
-
   useEffect(() => {
     async function getWithToken(url) {
       try {
@@ -44,7 +40,6 @@ export default function BookingSuccess() {
         <p>Booking id: {id}</p> 
       </div>
       <Link to="/bookings/">To all bookings</Link>
-
     </div>
   )
 }

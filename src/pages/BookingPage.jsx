@@ -27,7 +27,6 @@ export default function BookingPage() {
   document.title = `Book ${venue.name}`
   return (
     <div>
-
       <Booker id={id} maxGuests={venue.maxGuests} price={venue.price}/>
     </div>
   )
