@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { BASE_URL, ISOWNER, VENUES, token, isManager } from "../../constants/API";
 import { Button, TextField } from "@mui/material";
 
@@ -179,6 +179,7 @@ export default function EditVenue() {
   
   return (
     <div>
+      <Link to={`/venues/${id}`}>Back</Link>
       <h2>EditVenue</h2>
       <form onSubmit={handleEdit}>
         <div className="textfieldInputsGroup">
@@ -325,16 +326,18 @@ export default function EditVenue() {
               />
           </label>
         </div>
-        <Button 
-          size="small"
-          variant="contained" 
-          className="defaultButton"
-          id="defaultButton"
-          type="submit"
-          >
-          Submit edit
-        </Button>
-        <i class="fa-solid fa-trash fa-xl" onClick={handleDeleteVenue}></i>  
+        <div className="venueOptions">
+          <Button 
+            size="small"
+            variant="contained" 
+            className="defaultButton"
+            id="defaultButton"
+            type="submit"
+            >
+            Submit edit
+          </Button>
+          <i className="fa-solid fa-trash fa-xl" onClick={handleDeleteVenue}></i>  
+        </div>
       </form>
     </div>
   )

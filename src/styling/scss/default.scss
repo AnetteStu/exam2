@@ -34,8 +34,6 @@ a {
 
 .defaultButton, #defaultButton {
   height: 2em;
-  // margin: 0 auto;
-  // width: 100%;
   border-radius: $radius;
 
   background-color: $btnColor;
@@ -93,4 +91,25 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.venueOptions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1em 0;
+}
+
+.fa-trash {
+  color: rgb(210, 0, 0);
+  margin-left: 1em;
+}
+
+.fa-trash, .fa-file-pen {
+  transition: .2s ease-in-out all;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    filter: brightness(1.3);
+  }
 }

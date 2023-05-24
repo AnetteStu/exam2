@@ -159,11 +159,11 @@ function RenderVenue({id, name, description, price, guests, images, meta, locati
             {owner.name === user 
             ? 
               <div className="venueOwnerOptions"> 
-                <div>
-                  <i className="fa-solid fa-trash fa-xl" onClick={handleDeleteVenue}></i>
-                </div>
                 <div><Link to={`/edit/${id}`}>
                   <i className="fa-solid fa-file-pen fa-xl"></i></Link>
+                </div>
+                <div>
+                  <i className="fa-solid fa-trash fa-xl" onClick={handleDeleteVenue}></i>
                 </div>
               </div> 
               : ""}
