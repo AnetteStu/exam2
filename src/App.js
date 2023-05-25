@@ -21,6 +21,7 @@ import BookingPage from './pages/BookingPage';
 import BookingSuccess from './components/BookingSuccess';
 import Navigation from './components/Navigation';
 import NoPage from './pages/NoPage';
+import Booking from './pages/profile/Booking';
 
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
               <Route path='/settings/' element={<Settings/>}/>
 
               <Route path='/newbooking/:id' element={<BookingPage/>} />
+              <Route path='/booking/:id' element={<Booking/>} />
               
               <Route path='/overview/' element={<Overview/>}/>
               <Route path='/new/' element={<NewVenue/>}/>

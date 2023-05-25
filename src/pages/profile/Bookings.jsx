@@ -114,6 +114,7 @@ export default function Bookings() {
               <div className="bookingDates">
                 {booking.dateFrom.split("T")[0]} - {booking.dateTo.split("T")[0]}
               </div>
+              <div><Link to={`/booking/${booking.id}`}>Go to booking</Link></div>
               <form onSubmit={ConfirmDelete}>
                 <div className="center">
                   <Button 

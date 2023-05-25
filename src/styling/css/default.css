@@ -83,6 +83,7 @@ a:hover {
 
 .venueOptions {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   padding: 1em 0;
@@ -100,4 +101,9 @@ a:hover {
   cursor: pointer;
   transform: scale(1.1);
   filter: brightness(1.3);
+}
+
+.managerVenue {
+  width: 100%;
+  display: flex;
 }/*# sourceMappingURL=default.css.map */

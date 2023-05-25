@@ -57,6 +57,8 @@ useEffect(() => {
     )
   }   
 
+  // console.log(venues[0].bookings);
+
   return (
     <>
       <div className="profileContent">
@@ -64,14 +66,27 @@ useEffect(() => {
         <div>
           <h2>Your Venues</h2>
           {venues.length === 0 ? <div>No venues yet</div> : venues.map((venue) => (
-            <div key={venue.id}>
-              <div>
+            <div className="venueOptions" key={venue.id}>
+              <div className="managerVenue">
                 <Link to={`/edit/${venue.id}`}><i className="fa-solid fa-file-pen"></i></Link>
                 <Link to={`/venues/${venue.id}`}><div> {venue.name} </div></Link>
+              </div>
+              <div className="managerVenue">
                 {venue.bookings === [] 
                   ? "" 
-                  : <div> BOOKINGS {venue.bookings.length} </div>
+                  : 
+                  <div> 
+                    {venue.bookings.length} {venue.bookings.length > 1 ? "BOOKINGS" : "BOOKING"} 
+                    {venue.bookings.map(booking => 
+                      <div key={booking.id}>
+                        <Link to={`/booking/${booking.id}`} booking={booking}>{booking.id}</Link>
+                      </div>
+                    )}
+                  </div>
                 }
+                {/* {venue.bookings.map((booking) => {
+                    <div>{booking} </div>
+                  })} */}
               </div>
             </div>
           ))}
