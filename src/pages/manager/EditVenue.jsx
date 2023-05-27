@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { BASE_URL, ISOWNER, VENUES, token, isManager } from "../../constants/API";
 import { Button, TextField } from "@mui/material";
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 export default function EditVenue() {
   if(!token) {
@@ -92,7 +93,6 @@ export default function EditVenue() {
   // Input for Editing
   async function handleChange(e) {
     const value = e.target.value;
-    const checked = e.target.checked;
     
     if(e.target.name === 'name') {
       setName(value)
@@ -179,7 +179,11 @@ export default function EditVenue() {
   
   return (
     <div>
-      <Link to={`/venues/${id}`}>Back</Link>
+      <Breadcrumb>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/venues/`}}>Venues</Breadcrumb.Item>
+        <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/venues/${id}`}}> {name} </Breadcrumb.Item>
+        <Breadcrumb.Item active>Edit</Breadcrumb.Item>
+      </Breadcrumb>
       <h2>EditVenue</h2>
       <form onSubmit={handleEdit}>
         <div className="textfieldInputsGroup">
@@ -326,7 +330,7 @@ export default function EditVenue() {
               />
           </label>
         </div>
-        <div className="venueOptions">
+        <div className="venueOwnerOptions">
           <Button 
             size="small"
             variant="contained" 

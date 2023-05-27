@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { BASE_URL, BOOKING_OWNER, VENUES, token, user } from "../constants/API";
 import Rating from "../components/Rating";
 import { Button } from "@mui/material";
+import Breadcrumb from 'react-bootstrap/Breadcrumb';
 
 export default function Details() {
   const [venue, setVenue] = useState([]);
@@ -114,7 +115,10 @@ function RenderVenue({id, name, description, price, guests, images, meta, locati
     if(id) {
         return (
           <>
-          <Link to="/venues">Back</Link>
+          <Breadcrumb>
+            <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/venues/`}}>Venues</Breadcrumb.Item>
+            <Breadcrumb.Item active>{name}</Breadcrumb.Item>
+          </Breadcrumb>
             <div className="venue">
               <div className="images">{images}</div>
               <div className="venueHeader">

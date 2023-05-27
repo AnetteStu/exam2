@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { BASE_URL, BOOKINGS, token } from "../../constants/API";
 import { useEffect, useState } from "react";
 import ProfileNav from "../../components/ProfileNav";
+import { Breadcrumb } from "react-bootstrap";
 
 export default function Booking() {
   document.title = `Booking Details`
@@ -62,6 +63,10 @@ export default function Booking() {
       <div className="profileContent">
         <ProfileNav/>
         <div>
+          <Breadcrumb>
+            <Breadcrumb.Item linkAs={Link} linkProps={{ to: `/bookings/`}}>Bookings</Breadcrumb.Item>
+            <Breadcrumb.Item active>{id}</Breadcrumb.Item>
+          </Breadcrumb>
           <h1>Booking ID:</h1>
           <p>{id}</p>
           <h3>Details:</h3>

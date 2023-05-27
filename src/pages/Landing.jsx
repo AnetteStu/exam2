@@ -51,6 +51,9 @@ export default function Landing() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if(inputs.textInput === undefined) {
+      inputs.textInput = ""
+    }
     console.log(inputs.textInput);
     window.location.replace(`/venues?${inputs.textInput}`)
   }
