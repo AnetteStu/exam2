@@ -9,35 +9,8 @@ import { Link } from "react-router-dom";
 import { user } from "../constants/API";
 import { useState } from 'react';
 
-// function valuetext(value) {
-//   return `${value}`;
-// }
-// const minDistance = 10;
-
 
 export default function Landing() {
-
-  // const [value2, setValue2] = React.useState([0, 37]);
-
-  // const handleChange = (event, newValue, activeThumb) => {
-  //   if (!Array.isArray(newValue)) {
-  //     return;
-  //   }
-
-  //   if (newValue[1] - newValue[0] < minDistance) {
-  //     if (activeThumb === 0) {
-  //       const clamped = Math.min(newValue[0], 100 - minDistance);
-  //       setValue2([clamped, clamped + minDistance]);
-  //     } else {
-  //       const clamped = Math.max(newValue[1], minDistance);
-  //       setValue2([clamped - minDistance, clamped]);
-  //     }
-  //   } else {
-  //     setValue2(newValue);
-  //   }
-  // };
-
-
   document.title = `Home`
 
   const [inputs, setInputs] = useState({});
@@ -62,7 +35,6 @@ export default function Landing() {
       <div className={style.bgOverlay}></div>
       <div className={style.landingBackground}></div>
       <div className={style.content}>
-
         <section className={style.section}>
             <div className={style.landingTxt}>
               Explore the world with <span>Holidaze</span>
@@ -70,14 +42,11 @@ export default function Landing() {
             <div className={style.slogan}>
               Check out our most popular destinations
             </div>
-            {/* <div type="button" className="button">Get started <i className="fa-solid fa-plane-departure"></i></div> */}
             <Button 
               variant="contained" 
               className="defaultButton"
               id="defaultButton"
-              href="/venues"
-              // style=""
-              
+              href="/venues"              
               >Get started 
               <i className="fa-solid fa-plane-departure" />
             </Button>
@@ -87,7 +56,6 @@ export default function Landing() {
         <Row className="justify-content-md-center" >
           <Col md="auto" >            
               <Card 
-                // style={{ width: '25rem' }}
                 className="text-center">
                 <Card.Title></Card.Title>
               <Box
@@ -106,9 +74,6 @@ export default function Landing() {
                     autoFocus={true}
                     id="firstInput outlined-multiline-flexible"
                     label="Your destination"
-                    // sx={{
-                    //   width: "100%",
-                    // }}
                     style={{ width: '97%' }}
                     color="primary"
                     name='textInput'
@@ -124,25 +89,6 @@ export default function Landing() {
                       style={{ width: '97%' }}
                     />
                   </div>
-                  {/* <div className="textfieldInputsGroup2">
-                    <TextField
-                      id="outlined-multiline-flexible"
-                      label="Your destination"
-                    />
-                    <TextField
-                      id="outlined-multiline-flexible"
-                      label="Your destination"
-                    />
-                  </div> */}
-
-                  {/* <Slider
-                    getAriaLabel={() => 'Minimum distance shift'}
-                    value={value2}
-                    onChange={handleChange}
-                    valueLabelDisplay="auto"
-                    getAriaValueText={valuetext}
-                    disableSwap
-                  /> */}
                   
                   <Button 
                       size="small"
@@ -155,7 +101,6 @@ export default function Landing() {
                     </Button>
                 </div>
                 {user ? <div>Check your bookings <Link to="/bookings">here</Link>!</div> : <div>Already have an account? <Link to="/login"> Log in</Link></div>}
-                {/* Already have an account? <Link to="/login"> Log in</Link> */}
               </Box>
             </Card>
           </Col>
