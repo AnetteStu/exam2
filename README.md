@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Holidaze (Exam Project 2)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](./public/holidaze_logo.png)
 
-## Available Scripts
+Accommodation booking site for venues. An exam project for my second year of studies.
 
-In the project directory, you can run:
+## Description
 
-### `npm start`
+- Anyone can browse venues
+- Anyone can register as a user
+- Registrations with a "@student.noroff.no" will become venue managers  
+- Logged-in users can log out
+- Logged-in users can change their profile picture 
+- Logged-in users can book venues 
+- Logged-in users can view their own booking dates
+- Logged-in users can delete their own bookings
+- Venue managers can Create venues
+- Venue managers can edit the venues they manage
+- Venue managers can delete the venues they manage
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Built With
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [React.js](https://reactjs.org/)
+- [Bootstrap](https://getbootstrap.com)
+- [MUI Core](https://mui.com/core/)
+- [SASS](https://sass-lang.com/)
 
-### `npm test`
+## Getting Started
+### Installing
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repo:
 
-### `npm run build`
+```bash
+git clone https://github.com/AnetteStu/exam2
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install the dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Running
 
-### `npm run eject`
+To run the app, run the following commands:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+npm run start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributing
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Welcome to Holidaze, I'm very happy to have you on board for this project.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Known Bugs
+An extensive list of known bugs can be found on our [Trello](https://trello.com/b/BXnB2Bwe/exam-2)
+* Venue Images not always showing
+* Booking Price calculator lagging behind
+* Detail images cannot be clicked
 
-## Learn More
+You may also submit any recommendations via our issues thread 
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Reporting Bugs
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Make sure the bug isn't listed in known bugs
+* Please describe how to replicate the bug
+* Report the bug using [GitHub Issues](https://github.com/AnetteStu/exam2/issues)
+* Please provide any troubleshooting you might have done for said bug
 
-### Code Splitting
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[My Twitter page](https://twitter.com/NoobEnterprise)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[My LinkedIn page](https://www.linkedin.com/in/anette-d-32a336104/)
