@@ -51,7 +51,7 @@ export default function Booker(params) {
     // console.log(inputs);
     console.log(dayDifference);
     // window.location.replace("/newbooking")
-    // bookWithToken(`${BASE_URL}${BOOKINGS}`, inputs); 
+    bookWithToken(`${BASE_URL}${BOOKINGS}`, inputs); 
   }
 
   const today = new Date().toISOString().split("T")[0];
