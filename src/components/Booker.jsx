@@ -50,10 +50,18 @@ export default function Booker(params) {
 
   const handleBooking = (e) => {
     e.preventDefault();
-    // console.log(inputs);
     console.log(dayDifference);
-    // window.location.replace("/newbooking")
-    bookWithToken(`${BASE_URL}${BOOKINGS}`, inputs); 
+
+    if (!token) {
+      window.location.replace("/login")
+      return
+    }
+    if((inputs.dateTo === "") || (inputs.dateFrom === "") || (inputs.guests === 0)) {
+      console.log(inputs);
+      window.alert("Please select date to, from and number of guests!")
+      return
+    } 
+      bookWithToken(`${BASE_URL}${BOOKINGS}`, inputs); 
   }
 
   const today = new Date().toISOString().split("T")[0];
@@ -71,7 +79,7 @@ export default function Booker(params) {
         <div>
           Days: {dayDifference} <br/>
           Guests: {inputs.guests} <br/>
-          Total: {inputs.guests === 0 && dayDifference === 1 || dayDifference === 1 || inputs.guests === 0 ? params.price : (params.price*inputs.guests)*(1 + dayDifference)} 
+          Total: {(inputs.guests === 0 && dayDifference === 1) || (dayDifference === 1) || inputs.guests === 0 ? params.price : (params.price*inputs.guests)*(1 + dayDifference)} 
         </div>
       </div>
 
@@ -84,6 +92,7 @@ export default function Booker(params) {
               value={inputs.dateFrom} 
               min={today}
               onChange={handleChange}
+              required
             />
         </label>
         <label>To:
@@ -93,6 +102,7 @@ export default function Booker(params) {
               value={inputs.dateTo} 
               min={dateFrom}
               onChange={handleChange}
+              required
             />
         </label>
         <label title={`Max Guests ${guests}`}>Guests:
@@ -103,6 +113,7 @@ export default function Booker(params) {
               onChange={handleChange}
               min={1}
               max={maxGuests}
+              required
             />
         </label>
         <br/>
