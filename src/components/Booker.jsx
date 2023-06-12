@@ -3,6 +3,8 @@ import { token } from "../constants/API"
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
+import { BASE_URL, BOOKINGS } from "../constants/API";
+
 import style from "../styling/css/bookings.module.css"
 
 let id = ""
